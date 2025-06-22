@@ -4,5 +4,7 @@ pandas
 numpy
 scikit-learn
 sqlalchemy
-pytest
+
+# dev tools for CI
 flake8
+pytest
