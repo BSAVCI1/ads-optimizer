@@ -1,29 +1,11 @@
-# .github/workflows/ci.yml
-name: Test & Deploy
+import streamlit as st
+import pandas as pd
+from google.ads.googleads.client import GoogleAdsClient
+# … your other imports …
 
-on:
-  push:
-    branches: [ main ]
+def main():
+    st.title("Ads Optimizer")
+    # OAuth, data pull, conversion form, dashboard, etc.
 
-jobs:
-  lint-and-test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install deps
-        run: pip install -r requirements.txt
-      - name: Lint
-        run: flake8 .
-      - name: Run tests
-        run: pytest
-
-  deploy:
-    needs: lint-and-test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Deploy to Streamlit
-        run: |
-          streamlit run streamlit_app.py --server.headless true
-        env:
-          STREAMLIT_TOKEN: ${{ secrets.STREAMLIT_TOKEN }}
+if __name__ == "__main__":
+    main()
